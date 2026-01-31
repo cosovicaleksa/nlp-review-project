@@ -41,3 +41,15 @@ STAR_VECTORIZER_PATHS = {
     "French":  VECTORIZERS_DIR / "vec_star" / "tfidf_vec_fr.pkl",
     "Spanish": VECTORIZERS_DIR / "vec_star" / "bow_vec_es.pkl",
 }
+
+
+"""
+MACHINE TRANSLATION
+"""
+
+MACHINE_TRANSLATION_MODELS = {
+    "German": "Helsinki-NLP/opus-mt-de-en",
+    "French": "Helsinki-NLP/opus-mt-fr-en",
+    "Spanish": "Helsinki-NLP/opus-mt-es-en"
+    
+}

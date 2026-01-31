@@ -1,5 +1,6 @@
 from src.language_prediction.predict import predict_language
 from src.star_predicton.predict import predict_star
+from src.machine_translation.translation import translate
 
 def main():
 
@@ -15,6 +16,13 @@ def main():
         # Star pred
         predicted_star = predict_star(user_review, predicted_language)
         print(predicted_star)
+
+        if predicted_language != 'English':
+            translated_review = translate(user_review, predicted_language)
+        else:
+            translated_review = user_review
+
+        print(translated_review)
 
 if __name__ == "__main__":
     main()

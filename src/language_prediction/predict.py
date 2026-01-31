@@ -21,24 +21,24 @@ def get_fasttext():
     return _fasttext_cache
 
 # ovo korisitm samo za proveru da li je review na nekom od jezika na kojem nije trenian moj model
-def check_language_label(user_text: str):
+def check_language_label(user_review: str):
     ft = get_fasttext()
-    labels, probs = ft.predict(user_text, k=1)
+    labels, probs = ft.predict(user_review, k=1)
     return labels[0], float(probs[0])   
 
-def predict_language(user_text: str):
-    ft_label, ft_prob = check_language_label(user_text)
+def predict_language(user_review: str):
+    ft_label, ft_prob = check_language_label(user_review)
 
     # If fastText is confident AND says it's not one of supported languages -> Unsupported
     if ft_prob > 0.8 and ft_label not in SUPPORTED_LANGS:
-        return user_text, "Unsupported"
+        return user_review, "Unsupported"
 
     # Otherwise use your 4-class model
     model = load_pickle_cached(LANG_PRED_MODEL_PATH)
     vectorizer = load_pickle_cached(LANG_PRED_VECTORIZER_PATH)
 
-    X = vectorizer.transform([user_text])
+    X = vectorizer.transform([user_review])
     pred_id = int(model.predict(X)[0])
     predicted_label = reverse_mapping[pred_id]
 
-    return user_text, predicted_label
+    return user_review, predicted_label
