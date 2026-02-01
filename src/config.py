@@ -42,6 +42,12 @@ STAR_VECTORIZER_PATHS = {
     "Spanish": VECTORIZERS_DIR / "vec_star" / "bow_vec_es.pkl",
 }
 
+STAR_SPACY_MODEL = {
+    "English": "en_core_web_sm",
+    "German": "de_core_news_sm",
+    "French": "fr_core_news_sm",
+    "Spanish": "es_core_news_sm",
+}
 
 """
 MACHINE TRANSLATION
@@ -52,4 +58,64 @@ MACHINE_TRANSLATION_MODELS = {
     "French": "Helsinki-NLP/opus-mt-fr-en",
     "Spanish": "Helsinki-NLP/opus-mt-es-en"
     
+}
+
+"""
+CLUSTERING
+"""
+
+HDBSCAN_CLUSTERER_PATH  =  MODELS_DIR / "clustering" / "clusterer.pkl"
+UMAP_REDUCER_PATH  = MODELS_DIR / "clustering" / "reducer.pkl"
+
+
+CLUSTERS_NAMES = {
+    -1: "General / Mixed Product Feedback",
+
+    0: "Star Rating & Expectations",
+    1: "Books & Literature",
+    2: "Dog Supplies",
+    3: "Cat Supplies",
+
+    4: "Printer Ink & Office Supplies",
+    5: "Gardening & Seeds",
+    6: "Jewelry & Accessories",
+    7: "Watch Bands & Accessories",
+
+    8: "Games & Entertainment",
+    9: "Kids’ Toys & Gifts",
+    10: "Bedding & Sleep Products",
+    11: "Terrible / Waste of Money",
+
+    12: "Chairs & Seating",
+    13: "Breakage & Short Lifespan",
+    14: "Colors, Look & Appearance (Clothing)",
+    15: "Very Short / Low-Quality Comments",
+
+    16: "Tools, Hardware & DIY",
+    17: "Bags, Backpacks & Wallets",
+    18: "Phone Cases & Screen Protectors",
+    19: "Lights & Bulbs",
+
+    20: "Stops Working / Durability Issues",
+    21: "Good Quality & Value",
+    22: "General Positive Product Feedback",
+
+    23: "Shoes, Socks & Footwear",
+    24: "Size Issues (Runs Small / Wrong Size)",
+    25: "Clothing (Dresses, Shirts, Fit)",
+
+    26: "Audio: Headphones & Speakers",
+    27: "Towels, Washing & Laundry Items",
+    28: "Smell, Fragrance & Odor Complaints",
+
+    29: "Haircare & Brushes",
+    30: "Skincare & Face Products",
+    31: "Batteries & Battery Life",
+    32: "Charging Cables, Chargers & Power",
+
+    33: "Package Damage",
+    34: "Order, Shipping & Refund Problems",
+    35: "Taste & Flavor of Food Products",
+    36: "Coffee, Tea & Drinkware",
+    37: "Water Equipment (Hose, Pump, Filter)"
 }
