@@ -119,3 +119,10 @@ CLUSTERS_NAMES = {
     36: "Coffee, Tea & Drinkware",
     37: "Water Equipment (Hose, Pump, Filter)"
 }
+
+"""
+SENTIMENT ANALYSIS
+"""
+
+SENTIMENT_MODEL_PATH = MODELS_DIR / "sentiment_anal"
+SENTIMENT_TOKENIZER_PATH = VECTORIZERS_DIR / "tokenizer_sentiment"
