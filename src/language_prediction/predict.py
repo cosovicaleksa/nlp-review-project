@@ -17,4 +17,4 @@ def predict_language(user_review: str):
     pred_id = int(model.predict(X)[0])
     predicted_label = reverse_mapping[pred_id]
 
-    return user_review, predicted_label
+    return predicted_label
