@@ -25,37 +25,39 @@ Optional components:
 
 ## Project Structure
 
-├── README.md                 
+├── README.md
 ├── requirements.txt          <- Python dependencies
 ├── Dockerfile                <- Docker configuration for the FastAPI application
-├── .dockerignore             
+├── .dockerignore
 │
-├── saved_models/             <- Trained and serialized ML models 
+├── saved_models/             <- Trained and serialized ML models
 │
-├── src/                      
-│   ├── __init__.py           │   │
-│   ├── api/                  <- FastAPI application and HTTP endpoints
-│   │   └── main.py           
+├── src/
+│   ├── __init__.py
 │   │
-│   ├── pipelines/            
+│   ├── api/                  <- FastAPI application and HTTP endpoints
+│   │   └── main.py
+│   │
+│   ├── pipelines/
 │   │   └── review_pipeline.py
 │   │
-│   ├── language_prediction/  
-│   ├── star_predicton/       
+│   ├── language_prediction/
+│   ├── star_predicton/
 │   │
 │   ├── machine_translation/  <- Review translation to English
 │   │
 │   ├── clustering/           <- Topic / semantic clustering logic
 │   │
-│   ├── summarization/        <- Abstractive and extractive text summarization modules
+│   ├── summarization/        <- Abstractive and extractive text summarization
 │   │
-│   ├── sentiment_analysis/   
+│   ├── sentiment_analysis/
 │   │
-│   ├── llm/                  
-│   │   └── mistral.py        
+│   ├── llm/
+│   │   └── mistral.py        <- Ollama / Mistral helper functions (optional)
 │   │
-│   └── chat/                 
+│   └── chat/
 │       └── mistral_chat.py   <- Terminal-based streaming chatbot (optional)
+
 
 
 
