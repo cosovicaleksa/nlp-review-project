@@ -23,8 +23,10 @@ Optional components:
 - Local LLM (Mistral via Ollama) inference endpoints
 - Terminal-based streaming chatbot
 
+
 ## Project Structure
 
+```text
 ├── README.md
 ├── requirements.txt          <- Python dependencies
 ├── Dockerfile                <- Docker configuration for the FastAPI application
@@ -57,7 +59,6 @@ Optional components:
 │   │
 │   └── chat/
 │       └── mistral_chat.py   <- Terminal-based streaming chatbot (optional)
-
 
 
 
