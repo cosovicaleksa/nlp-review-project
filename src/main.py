@@ -1,9 +1,4 @@
-from src.language_prediction.predict import predict_language
-from src.star_predicton.predict import predict_star
-from src.machine_translation.translation import translate
-from src.clustering.predict import predict_cluster
-from src.summarization.summarization import summarize
-from src.sentiment_analysis.predict import sentiment_analysis
+from src.pipelines import process_review
 
 texts = [
     # 1) ENGLISH — Cluster 1 (Books) - Expected stars: (4)
@@ -24,60 +19,10 @@ def main():
 
     for user_review in texts:
         print("\n================ NEW REVIEW ================\n")
-
-        # Language detection 
-        predicted_language = predict_language(user_review)
-        print(f"Detected language:\n→ {predicted_language}\n")
-
-        # Star prediction 
-        predicted_star = predict_star(user_review, predicted_language)
-        print(f"Predicted rating:\n→ {predicted_star} stars\n")
-
-        # Translation (if needed)
-        if predicted_language != "English":
-            translated_user_review = translate(user_review, predicted_language)
-            print(f"Translated review (English):\n→ {translated_user_review}\n")
-        else:
-            translated_user_review = user_review
-            print("Translation:\n→ Not needed (already English)\n")
-
-        # Clustering
-        predicted_cluster = predict_cluster(translated_user_review)
-        print(f"Predicted cluster:\n→ {predicted_cluster}\n")
-
-        # Abstractive summarization (BART)
-        abstractive_summary = summarize(translated_user_review, method="bart")
-        if abstractive_summary != translated_user_review:
-            print(f"Abstractive summary:\n→ {abstractive_summary}\n")
-        else:
-            print("Abstractive summary:\n→ Text too short for summarization\n")
-
-        # Extractive summarization (TextRank)
-        extractive_summary = summarize(translated_user_review, method="textrank")
-        if extractive_summary != translated_user_review:
-            print(f"Extractive summary:\n→ {extractive_summary}\n")
-        else:
-            print("Extractive summary:\n→ Text too short for summarization\n")
-
-        #SENTIMENT
-        is_english = (predicted_language == "English")
-        is_summarized = (abstractive_summary != translated_user_review)
-
-        # sentiment is computed on the same text the message describes
-        sentiment_input = abstractive_summary if is_summarized else translated_user_review
-        sentiment = sentiment_analysis(sentiment_input)
-
-        if is_english:
-            if is_summarized:
-                print("\nSentiment of the summarized English review is: ", sentiment)
-            else:
-                print("\nSentiment of the original English review is: ", sentiment)
-        else:
-            if is_summarized:
-                print("\nSentiment of the translated and summarized text is: ", sentiment)
-            else:
-                print("\nSentiment of the translated (not summarized) text is: ", sentiment)
-
+        out = process_review(user_review)
+        for k, v in out.items():
+            print(f"{k}: {v}\n")
+        
 
         
 
